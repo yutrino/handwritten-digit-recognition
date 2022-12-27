@@ -1,9 +1,10 @@
+# 画像を配列に格納して表示
 import glob
 from PIL import Image
 import numpy
 
  
-files = glob.glob('png/*.png')
+files = glob.glob('png/test/*.png')
 
 SIZE = 28
 for img in files:

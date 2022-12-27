@@ -1,15 +1,17 @@
-# MNISTのデータで訓練、csv1のデータでテスト(evaluate)する
+# MNISTのデータで訓練、csv/testのデータでテスト(evaluate)する
 import tensorflow as tf
 from tensorflow.keras import datasets, layers, models
 import glob
 import numpy
 
+
+# 訓練用データの作成
 (train_images, train_labels), (test_images, test_labels) = datasets.mnist.load_data()
 train_images = train_images.reshape((60000, 28, 28, 1))
 
 
 # テスト用データを作成（csvのデータを配列data1に入れる）
-files = glob.glob('csv1/*.csv') 
+files = glob.glob('csv/test/*.csv') 
 NUM = len(files)
 SIZE = 28
 data1 = numpy.zeros((NUM, SIZE, SIZE))
@@ -23,7 +25,7 @@ data1 = numpy.zeros((NUM, SIZE, SIZE))
 # OKなやり方
 i = 0
 for num in range(NUM):
-    csv_name = 'csv1/img_gray_resize' + str(i + 1) + '.csv'
+    csv_name = 'csv/test/img_gray_resize' + str(i) + '.csv'
     data1[i] = numpy.genfromtxt(
         csv_name,
         delimiter=",",
@@ -33,16 +35,16 @@ for num in range(NUM):
     i = i + 1
     
 # OKな方の意味
-# data1[0] = numpy.genfromtxt('csv1/img_gray_resize1.csv', delimiter=",", skip_header=0, skip_footer=0, usecols=(range(0, SIZE)))
-# data1[1] = numpy.genfromtxt('csv1/img_gray_resize2.csv', delimiter=",", skip_header=0, skip_footer=0, usecols=(range(0, SIZE)))
-# data1[2] = numpy.genfromtxt('csv1/img_gray_resize3.csv', delimiter=",", skip_header=0, skip_footer=0, usecols=(range(0, SIZE)))
-# data1[3] = numpy.genfromtxt('csv1/img_gray_resize4.csv', delimiter=",", skip_header=0, skip_footer=0, usecols=(range(0, SIZE)))
-# data1[4] = numpy.genfromtxt('csv1/img_gray_resize5.csv', delimiter=",", skip_header=0, skip_footer=0, usecols=(range(0, SIZE)))
-# data1[5] = numpy.genfromtxt('csv1/img_gray_resize6.csv', delimiter=",", skip_header=0, skip_footer=0, usecols=(range(0, SIZE)))
-# data1[6] = numpy.genfromtxt('csv1/img_gray_resize7.csv', delimiter=",", skip_header=0, skip_footer=0, usecols=(range(0, SIZE)))
-# data1[7] = numpy.genfromtxt('csv1/img_gray_resize8.csv', delimiter=",", skip_header=0, skip_footer=0, usecols=(range(0, SIZE)))
-# data1[8] = numpy.genfromtxt('csv1/img_gray_resize9.csv', delimiter=",", skip_header=0, skip_footer=0, usecols=(range(0, SIZE)))
-# data1[9] = numpy.genfromtxt('csv1/img_gray_resize10.csv', delimiter=",", skip_header=0, skip_footer=0, usecols=(range(0, SIZE)))
+# data1[0] = numpy.genfromtxt('csv/test/img_gray_resize1.csv', delimiter=",", skip_header=0, skip_footer=0, usecols=(range(0, SIZE)))
+# data1[1] = numpy.genfromtxt('csv/test/img_gray_resize2.csv', delimiter=",", skip_header=0, skip_footer=0, usecols=(range(0, SIZE)))
+# data1[2] = numpy.genfromtxt('csv/test/img_gray_resize3.csv', delimiter=",", skip_header=0, skip_footer=0, usecols=(range(0, SIZE)))
+# data1[3] = numpy.genfromtxt('csv/test/img_gray_resize4.csv', delimiter=",", skip_header=0, skip_footer=0, usecols=(range(0, SIZE)))
+# data1[4] = numpy.genfromtxt('csv/test/img_gray_resize5.csv', delimiter=",", skip_header=0, skip_footer=0, usecols=(range(0, SIZE)))
+# data1[5] = numpy.genfromtxt('csv/test/img_gray_resize6.csv', delimiter=",", skip_header=0, skip_footer=0, usecols=(range(0, SIZE)))
+# data1[6] = numpy.genfromtxt('csv/test/img_gray_resize7.csv', delimiter=",", skip_header=0, skip_footer=0, usecols=(range(0, SIZE)))
+# data1[7] = numpy.genfromtxt('csv/test/img_gray_resize8.csv', delimiter=",", skip_header=0, skip_footer=0, usecols=(range(0, SIZE)))
+# data1[8] = numpy.genfromtxt('csv/test/img_gray_resize9.csv', delimiter=",", skip_header=0, skip_footer=0, usecols=(range(0, SIZE)))
+# data1[9] = numpy.genfromtxt('csv/test/img_gray_resize10.csv', delimiter=",", skip_header=0, skip_footer=0, usecols=(range(0, SIZE)))
 
 data1 = data1.reshape((NUM, 28, 28, 1))
 test_images = data1
