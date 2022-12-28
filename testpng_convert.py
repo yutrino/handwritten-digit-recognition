@@ -1,5 +1,5 @@
 # png_test3.py
-# test用画像をcsvに変換してcsv1に格納
+# test用画像をcsvファイルに変換してcsv1に保存
 import glob
 from PIL import Image
 import numpy
