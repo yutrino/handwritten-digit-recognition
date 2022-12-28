@@ -1,4 +1,4 @@
-# train用画像をcsvに変換してcsv2に格納
+# train用画像をcsvファイルに変換してcsv2に保存
 import glob
 from PIL import Image
 import numpy
