@@ -1,5 +1,5 @@
-MNIST/test/*
-MNIST/train/*
+MNIST/test/
+MNIST/train/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
